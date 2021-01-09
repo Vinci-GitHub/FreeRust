@@ -6,3 +6,4 @@ fn main() {
     print!("bbbbbbb");
 }
 
+//　コメント追加
