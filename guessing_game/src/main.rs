@@ -11,4 +11,5 @@ fn main() {
         .expect("Failed to read line");
 
     println!("You guess: {}", guess);
+    println!("2+3={}", 2+3);
 }
