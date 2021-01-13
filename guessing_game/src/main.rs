@@ -13,4 +13,5 @@ fn main() {
     println!("You guess: {}", guess);
     println!("2+3={}", 2+3);
     println!("3-1={}", 3-1);
+    println!("3*1={}", 3*1);
 }
