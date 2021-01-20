@@ -21,6 +21,8 @@ fn main() {
     println!("3*1={}", 3*1);
     println!("3/1={}", 3/1);
     println!("3%1={}", 3%1);
+    println!("End！");
+
 
 
     
