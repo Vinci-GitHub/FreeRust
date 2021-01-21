@@ -10,6 +10,8 @@ fn main() {
     io::stdin().read_line(&mut guess)
         .expect("Failed to read line");
 
+
+    println!("Start！");
     println!("You guess: {}", guess);
     println!("2+3={}", 2+3);
     println!("3-1={}", 3-1);
