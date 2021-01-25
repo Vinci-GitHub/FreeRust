@@ -1,20 +1,18 @@
-fn main() {
-    println!("123");
-    println!();
-    println!("{}", 456);
-    print!("aaaaaaa");
-    print!("bbbbbbb");
+//関数の引数は`(変数名: 型名、 )`で書く
+fn fizzbuzz(n: usize) {
+    for i in 0..n {
+        if i % 15 == 0 {
+            println!("Fizzbuzz");
+        } else if i % 3 == 0 {
+            println!("Fizz");
+        } else if i % 5 == 0 {
+            println!("Buzz");
+        } else {
+            println!("{}", i);
+        }
+    }
 }
 
-//　コメント追加
-//　コメント追加
-//　コメント追加
-
-
-// 変数宣言
-
-
-fn aaaaa() {
-    let n = 0;
-    println!("{}", n);
+fn main() {
+    fizzbuzz(20);
 }
