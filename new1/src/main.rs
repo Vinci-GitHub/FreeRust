@@ -15,6 +15,10 @@ fn fizzbuzz(n: usize) {
     }
 }
 
+fn swap(x: i32, y: i32) -> (i32, i32) {
+    return (y, x);
+}
+
 fn main() {
     fizzbuzz(20);
 
@@ -41,5 +45,15 @@ fn main() {
     let c = a as u32 + b;
     println!("{}", c);
 
-    println!("ゼロからアップル{}を作るには", PI);
+    let nums: [i32; 3] = [1, 2, 3];
+    println!("{:?}", nums);
+    println!("{}", nums[1]);
+
+    // 戻り値をタプルで返す
+    let result = swap(123, 321);
+    println!("{} {}", result.0, result.1);
+
+    // タプルを2つの変数に分解
+    let (a, b) = swap(result.0, result.1);
+    println!("{} {}", a, b);
 }
