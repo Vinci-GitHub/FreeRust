@@ -12,4 +12,10 @@ fn main() {
     let s = String::from("Hello World!");
     // インスタンスを使ってメソッドを呼び出す。
     println!("{} is {}", s, s.len());
+
+    let ferris = SeaCreature {
+        animal_type: String::from("crab"),
+    };
+
+    println!("{}", ferris);
 }
