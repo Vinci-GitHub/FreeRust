@@ -1,43 +1,58 @@
+#![allow(dead_code)] // この行でコンパイラのwarings messageを止めます
+
+enum Species {
+    Crab,
+    Octopus,
+    Fish,
+    Clam,
+}
+enum PoisonType {
+    Acidic,
+    Painful,
+    Lethal,
+}
+enum Size {
+    Big,
+    Small,
+}
+enum Weapon {
+    Claw(i32, Size),
+    Poison(PoisonType),
+    None,
+}
+
 struct SeaCreature {
-    // Stringは構造体である
-    animal_type: String,
+    sepecies: Species,
     name: String,
     arms: i32,
     legs: i32,
-    wepon: String,
+    wepon: Weapon,
 }
 
 fn main() {
-    // staticメソッドでStringインスタンスを作成する
-    let s = String::from("Hello World!");
-    // インスタンスを使ってメソッドを呼び出す。
-    println!("{} is {}", s, s.len());
-
-    // SeaCreatureのデータはスタックに入ります
+    // SeaCreatureのデータもスタックに入ります
     let ferris = SeaCreature {
-        // String構造体もスタックに入りますが、
-        // ヒープに入るデータの参照アドレスが一つ入ります。
-        animal_type: String::from("crab"),
+        sepecies: Species::Crab,
         name: String::from("Ferris"),
         arms: 2,
         legs: 4,
-        wepon: String::from("claw"),
+        wepon: Weapon::Claw(2, Size::Small),
     };
 
-    let sarah = SeaCreature {
-        animal_type: String::from("octopus"),
-        name: String::from("Sarah"),
-        arms: 8,
-        legs: 0,
-        wepon: String::from("none"),
-    };
-
-    println!(
-        "{} is a {}. They have {} arms, {} legs, and a {} wepon",
-        ferris.name, ferris.animal_type, ferris.arms, ferris.legs, ferris.wepon
-    );
-    println!(
-        "{} is a {}. They have {} arms . and {} legs. They have no wepon..",
-        sarah.name, sarah.animal_type, sarah.arms, sarah.legs
-    );
+    match ferris.sepecies {
+        Species::Crab => match ferris.wepon {
+            Weapon::Claw(num_claws, size) => {
+                let size_description = match size {
+                    Size::Big => "big",
+                    Size::Small => "small",
+                };
+                println!(
+                    "ferris is a crab with {} {} claws",
+                    num_claws, size_description
+                )
+            }
+            _ => println!("ferris is a crab with some other wepon"),
+        },
+        _ => println!("ferris is some other animal"),
+    }
 }
