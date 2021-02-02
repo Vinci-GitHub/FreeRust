@@ -1,32 +1,29 @@
-// 部分的に定義された構造体
-struct BagOfHolding<T> {
-    // パラメータTを渡す事が可能
-    item: Option<T>,
+fn do_something_that_might_fail(i: i32) -> Result<f32, String> {
+    if i == 42 {
+        Ok(13.0)
+    } else {
+        Err(String::from("正しい値ではありません"))
+    }
 }
 
-fn main() {
-    // i32が入るバッグには何も入っていません
-    // Noneからは型が決められない為型をしているする必要があります
-    let i32_bag = BagOfHolding::<i32> { item: None };
+// mainは値は返しませんがエラーを返す事があります
+fn main() -> Result<(), String> {
+    let result = do_something_that_might_fail(12);
 
-    if i32_bag.item.is_none() {
-        println!("バッグには何もない")
-    } else {
-        println!("バッグにはなにかある")
+    match result {
+        Ok(v) => println!("発見 {}", v),
+        Err(_e) => {
+            //エラーをうまく処理
+            //何が起きたのかを説明する新しいerr を mainから返します
+            return Err(String::from("mainでなにか問題が起きました"));
+        }
     }
 
-    let i32_bag = BagOfHolding::<i32> { item: Some(42) };
+    // Resultのokの中にあるunit値によって
+    // すべてが正常である事を表現している事に注意してください
+    Ok(())
+}
 
-    if i32_bag.item.is_some() {
-        println!("バッグにはなにかある")
-    } else {
-        println!("バッグには何もない!")
-    }
-
-    // match はOptionをエレガントに分解して
-    // すべてのケースが処理されることを保証できます
-    match i32_bag.item {
-        Some(v) => println!("バッグに {} を発見", v),
-        None => println!("何も見つからなかった"),
-    }
+pub mod hosting {
+    pub fn add_to_waitlist() {}
 }
