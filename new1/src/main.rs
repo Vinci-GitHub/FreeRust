@@ -24,6 +24,7 @@ fn main() -> Result<(), String> {
     Ok(())
 }
 
+//コメント追加
 pub mod hosting {
     pub fn add_to_waitlist() {}
 }
